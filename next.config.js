@@ -5,6 +5,7 @@ module.exports = (phase, { defaultConfig }) => {
     reactStrictMode: true,
     swcMinify: true,
     basePath: "/github-editor",
+    trailingSlash: true,
   };
 
   return nextConfig;
