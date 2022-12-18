@@ -21,7 +21,7 @@ const Home: NextPage = () => {
 
     (async () => {
       try {
-        await fetch(`https://app.divops.kr/login/api/set-cookie`, {
+        await fetch(`https://app.divops.kr/login/api/set-token`, {
           method: "POST",
           headers: {
             Authorization: code,
