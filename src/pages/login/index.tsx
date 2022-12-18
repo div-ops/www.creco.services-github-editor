@@ -1,7 +1,38 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { useResetQueryParam } from "../../hooks/useResetQueryParam";
 
 const Home: NextPage = () => {
+  const { resetQueryParam } = useResetQueryParam();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!router.isReady) {
+      return;
+    }
+
+    const code = router.query.code;
+
+    if (code == null || Array.isArray(code)) {
+      return;
+    }
+
+    (async () => {
+      try {
+        await fetch(`https://app.divops.kr/login/api/set-cookie`, {
+          method: "POST",
+          headers: {
+            Authorization: code,
+          },
+        });
+      } finally {
+        resetQueryParam("code");
+      }
+    })();
+  }, [router]);
+
   return (
     <div>
       <Head>
