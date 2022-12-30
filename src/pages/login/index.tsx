@@ -44,7 +44,7 @@ const Home: NextPage = () => {
         <button
           onClick={() => {
             location.assign(
-              `https://app.divops.kr/login/test-login?referrer=${location.href}`
+              `https://app.divops.kr/login/request?referrer=${location.href}`
             );
           }}
         >
