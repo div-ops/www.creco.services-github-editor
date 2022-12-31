@@ -21,7 +21,7 @@ const Home: NextPage = () => {
 
     (async () => {
       try {
-        await fetch(`https://app.divops.kr/login/api/set-token`, {
+        await fetch(`https://app.divops.kr/github-api/api/set-token`, {
           method: "POST",
           headers: {
             Authorization: code,
@@ -44,7 +44,7 @@ const Home: NextPage = () => {
         <button
           onClick={() => {
             location.assign(
-              `https://app.divops.kr/login/request?referrer=${location.href}`
+              `https://app.divops.kr/github-api/request?referrer=${location.href}`
             );
           }}
         >
