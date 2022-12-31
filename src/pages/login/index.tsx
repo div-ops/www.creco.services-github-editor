@@ -93,6 +93,7 @@ export default Home;
 async function requestLogout() {
   await fetch(`https://app.divops.kr/github-api/api/logout`, {
     method: "GET",
+    credentials: "include",
   });
 }
 
@@ -101,6 +102,7 @@ async function fetchUserInfo() {
     `https://app.divops.kr/github-api/api/user/info`,
     {
       method: "GET",
+      credentials: "include",
     }
   );
 
@@ -112,6 +114,7 @@ async function setCookieToken(code: string) {
     method: "POST",
     headers: {
       Authorization: code,
+      credentials: "include",
     },
   });
 }
