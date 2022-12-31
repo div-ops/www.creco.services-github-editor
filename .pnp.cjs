@@ -600,10 +600,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@eslint/eslintrc", [\
-        ["npm:1.4.0", {\
-          "packageLocation": "./.yarn/cache/@eslint-eslintrc-npm-1.4.0-f3a03b15bc-73e39c833d.zip/node_modules/@eslint/eslintrc/",\
+        ["npm:1.4.1", {\
+          "packageLocation": "./.yarn/cache/@eslint-eslintrc-npm-1.4.1-007f670de2-cd3e5a8683.zip/node_modules/@eslint/eslintrc/",\
           "packageDependencies": [\
-            ["@eslint/eslintrc", "npm:1.4.0"],\
+            ["@eslint/eslintrc", "npm:1.4.1"],\
             ["ajv", "npm:6.12.6"],\
             ["debug", "virtual:13e8211fef7d70350208644f0998d53969a81b86246fda7d97d7fa9b9d174e45548bc528c8768f08c02096f917b2dd6a8e4dcec6187e472dfaf96e40b05be272#npm:4.3.4"],\
             ["espree", "npm:9.4.1"],\
@@ -1888,7 +1888,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/eslint-npm-8.23.1-bc9a4812f6-a727e15492.zip/node_modules/eslint/",\
           "packageDependencies": [\
             ["eslint", "npm:8.23.1"],\
-            ["@eslint/eslintrc", "npm:1.4.0"],\
+            ["@eslint/eslintrc", "npm:1.4.1"],\
             ["@humanwhocodes/config-array", "npm:0.10.7"],\
             ["@humanwhocodes/gitignore-to-minimatch", "npm:1.0.2"],\
             ["@humanwhocodes/module-importer", "npm:1.0.1"],\
