@@ -94,7 +94,7 @@ const Home: NextPage = () => {
 export default Home;
 
 function createAuthHeaders() {
-  const Authorization = localStorage.getItem("Authorization");
+  const Authorization = localStorage.getItem("authorization");
   if (Authorization != null) {
     return { Authorization } as const;
   } else {
