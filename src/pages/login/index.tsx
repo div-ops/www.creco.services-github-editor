@@ -24,21 +24,8 @@ const Home: NextPage = () => {
     setLoading(true);
 
     localStorage.setItem("authorization", code);
+
     resetQueryParam("code");
-
-    // (async () => {
-    //   try {
-    //     await setCookieToken(code);
-    //     const { data } = (await fetchUserInfo()) ?? {};
-    //     if (data == null) {
-    //       return;
-    //     }
-
-    //     setUser(data.login);
-    //   } finally {
-    //     resetQueryParam("code");
-    //   }
-    // })();
   }, [router]);
 
   useEffect(() => {
@@ -103,12 +90,7 @@ function createAuthHeaders() {
 }
 
 async function requestLogout() {
-  await fetch(`https://app.divops.kr/github-api/api/logout`, {
-    method: "GET",
-    headers: {
-      ...createAuthHeaders(),
-    },
-  });
+  localStorage.removeItem("authorization");
 }
 
 async function fetchUserInfo() {
@@ -124,16 +106,6 @@ async function fetchUserInfo() {
 
   return await response.json();
 }
-
-// async function setCookieToken(code: string) {
-//   await fetch(`https://app.divops.kr/github-api/api/set-cookie`, {
-//     method: "POST",
-//     headers: {
-//       Authorization: code,
-//       credentials: "include",
-//     },
-//   });
-// }
 
 function requestLogin() {
   location.assign(
