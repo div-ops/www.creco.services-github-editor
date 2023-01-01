@@ -23,19 +23,22 @@ const Home: NextPage = () => {
 
     setLoading(true);
 
-    (async () => {
-      try {
-        await setCookieToken(code);
-        const { data } = (await fetchUserInfo()) ?? {};
-        if (data == null) {
-          return;
-        }
+    localStorage.setItem("authorization", code);
+    resetQueryParam("code");
 
-        setUser(data.login);
-      } finally {
-        resetQueryParam("code");
-      }
-    })();
+    // (async () => {
+    //   try {
+    //     await setCookieToken(code);
+    //     const { data } = (await fetchUserInfo()) ?? {};
+    //     if (data == null) {
+    //       return;
+    //     }
+
+    //     setUser(data.login);
+    //   } finally {
+    //     resetQueryParam("code");
+    //   }
+    // })();
   }, [router]);
 
   useEffect(() => {
@@ -90,10 +93,21 @@ const Home: NextPage = () => {
 
 export default Home;
 
+function createAuthHeaders() {
+  const Authorization = localStorage.getItem("Authorization");
+  if (Authorization != null) {
+    return { Authorization } as const;
+  } else {
+    return {} as any;
+  }
+}
+
 async function requestLogout() {
   await fetch(`https://app.divops.kr/github-api/api/logout`, {
     method: "GET",
-    credentials: "include",
+    headers: {
+      ...createAuthHeaders(),
+    },
   });
 }
 
@@ -102,22 +116,24 @@ async function fetchUserInfo() {
     `https://app.divops.kr/github-api/api/user/info`,
     {
       method: "GET",
-      credentials: "include",
+      headers: {
+        ...createAuthHeaders(),
+      },
     }
   );
 
   return await response.json();
 }
 
-async function setCookieToken(code: string) {
-  await fetch(`https://app.divops.kr/github-api/api/set-cookie`, {
-    method: "POST",
-    headers: {
-      Authorization: code,
-      credentials: "include",
-    },
-  });
-}
+// async function setCookieToken(code: string) {
+//   await fetch(`https://app.divops.kr/github-api/api/set-cookie`, {
+//     method: "POST",
+//     headers: {
+//       Authorization: code,
+//       credentials: "include",
+//     },
+//   });
+// }
 
 function requestLogin() {
   location.assign(
